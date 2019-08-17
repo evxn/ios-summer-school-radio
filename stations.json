@@ -1,5 +1,6 @@
 [
 	{
+		"id": 1,
 		"imageUrl": "https://onlayn-radio.ru/uploads/posts/2014-07/1406031839_logo.png",
 		"stream": "http://icecast.vgtrk.cdnvideo.ru/mayakfm_mp3_192kbps",
 		"title": "Радио Маяк",
@@ -7,6 +8,7 @@
 		"website": "http://www.radiomayak.ru"
 	},
 	{
+		"id": 2,
 		"imageUrl": "https://onlayn-radio.ru/uploads/posts/2014-07/1406029531_logo.png",
 		"stream": "http://ice912.echo.msk.ru:9120/stream",
 		"title": "Эхо Москвы",
@@ -14,6 +16,7 @@
 		"website": "http://www.echo.msk.ru"
 	},
 	{
+		"id": 3,
 		"imageUrl": "https://onlayn-radio.ru/uploads/posts/2014-07/1406188703_logo.png",
 		"stream": "http://ic3.101.ru:8000/a99?type=.mp3",
 		"title": "Радио ENERGY (Энерджи)",
@@ -21,6 +24,7 @@
 		"website": "http://www.energyfm.ru"
 	},
 	{
+		"id": 4,
 		"imageUrl": "https://onlayn-radio.ru/uploads/posts/2018-07/1531152285_logo.png",
 		"stream": "https://onlayn-radio.ru/uploads/posts/2018-07/1531152285_logo.png",
 		"title": "Наше Радио",
