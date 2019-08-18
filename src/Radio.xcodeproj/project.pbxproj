@@ -9,14 +9,15 @@
 /* Begin PBXBuildFile section */
 		1A0EF5C0F2F30D551ED191E2 /* Pods_Radio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91A514A7815C2DBD08C467F5 /* Pods_Radio.framework */; };
 		BE0547422305DA5F002CEAD8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0547412305DA5F002CEAD8 /* AppDelegate.swift */; };
-		BE0547462305DA5F002CEAD8 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0547452305DA5F002CEAD8 /* ListViewController.swift */; };
+		BE0547462305DA5F002CEAD8 /* DIscoveryListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0547452305DA5F002CEAD8 /* DIscoveryListController.swift */; };
 		BE0547492305DA5F002CEAD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE0547472305DA5F002CEAD8 /* Main.storyboard */; };
 		BE05474C2305DA5F002CEAD8 /* Radio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE05474A2305DA5F002CEAD8 /* Radio.xcdatamodeld */; };
 		BE0547512305DA5F002CEAD8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE05474F2305DA5F002CEAD8 /* LaunchScreen.storyboard */; };
 		BE05476123084677002CEAD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE05476023084677002CEAD8 /* Assets.xcassets */; };
+		BE7BCFD72309B88A00627959 /* UtilsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7BCFD62309B88A00627959 /* UtilsService.swift */; };
 		BEF1631F230949CF00C3FC7A /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF1631E230949CF00C3FC7A /* BaseService.swift */; };
 		BEF1632123094A6B00C3FC7A /* RadioStationDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF1632023094A6B00C3FC7A /* RadioStationDto.swift */; };
-		BEF1632323094DEF00C3FC7A /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF1632223094DEF00C3FC7A /* NetworkConstants.swift */; };
+		BEF1632323094DEF00C3FC7A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF1632223094DEF00C3FC7A /* Constants.swift */; };
 		BEF1632A2309707800C3FC7A /* DiscoveryItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF163292309707800C3FC7A /* DiscoveryItemCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -26,15 +27,16 @@
 		91A514A7815C2DBD08C467F5 /* Pods_Radio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Radio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE05473E2305DA5F002CEAD8 /* Radio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Radio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE0547412305DA5F002CEAD8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BE0547452305DA5F002CEAD8 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		BE0547452305DA5F002CEAD8 /* DIscoveryListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIscoveryListController.swift; sourceTree = "<group>"; };
 		BE0547482305DA5F002CEAD8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BE05474B2305DA5F002CEAD8 /* Radio.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Radio.xcdatamodel; sourceTree = "<group>"; };
 		BE0547502305DA5F002CEAD8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BE0547522305DA5F002CEAD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE05476023084677002CEAD8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BE7BCFD62309B88A00627959 /* UtilsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilsService.swift; sourceTree = "<group>"; };
 		BEF1631E230949CF00C3FC7A /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseService.swift; path = Radio/Services/BaseService.swift; sourceTree = SOURCE_ROOT; };
 		BEF1632023094A6B00C3FC7A /* RadioStationDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RadioStationDto.swift; path = Radio/Models/RadioStationDto.swift; sourceTree = SOURCE_ROOT; };
-		BEF1632223094DEF00C3FC7A /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
+		BEF1632223094DEF00C3FC7A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BEF163292309707800C3FC7A /* DiscoveryItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryItemCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,7 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				BE05476023084677002CEAD8 /* Assets.xcassets */,
-				BEF1632223094DEF00C3FC7A /* NetworkConstants.swift */,
+				BEF1632223094DEF00C3FC7A /* Constants.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -138,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				BEF1631E230949CF00C3FC7A /* BaseService.swift */,
+				BE7BCFD62309B88A00627959 /* UtilsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -145,7 +148,7 @@
 		BEF163282309703100C3FC7A /* Discovery */ = {
 			isa = PBXGroup;
 			children = (
-				BE0547452305DA5F002CEAD8 /* ListViewController.swift */,
+				BE0547452305DA5F002CEAD8 /* DIscoveryListController.swift */,
 				BEF163292309707800C3FC7A /* DiscoveryItemCell.swift */,
 			);
 			path = Discovery;
@@ -275,13 +278,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BEF1632323094DEF00C3FC7A /* NetworkConstants.swift in Sources */,
+				BEF1632323094DEF00C3FC7A /* Constants.swift in Sources */,
 				BEF1632A2309707800C3FC7A /* DiscoveryItemCell.swift in Sources */,
 				BEF1631F230949CF00C3FC7A /* BaseService.swift in Sources */,
-				BE0547462305DA5F002CEAD8 /* ListViewController.swift in Sources */,
+				BE0547462305DA5F002CEAD8 /* DIscoveryListController.swift in Sources */,
 				BE05474C2305DA5F002CEAD8 /* Radio.xcdatamodeld in Sources */,
 				BEF1632123094A6B00C3FC7A /* RadioStationDto.swift in Sources */,
 				BE0547422305DA5F002CEAD8 /* AppDelegate.swift in Sources */,
+				BE7BCFD72309B88A00627959 /* UtilsService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

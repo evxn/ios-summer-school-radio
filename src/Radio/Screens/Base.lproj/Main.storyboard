@@ -33,18 +33,25 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="130" placeholderIntrinsicHeight="130" image="icons8-microphone" translatesAutoresizingMaskIntoConstraints="NO" id="FhB-Qw-WNd">
+                                                <imageView autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="130" placeholderIntrinsicHeight="130" translatesAutoresizingMaskIntoConstraints="NO" id="FhB-Qw-WNd">
                                                     <rect key="frame" x="15" y="11" width="80" height="80.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="80" id="fmq-dO-2Qy"/>
                                                         <constraint firstAttribute="height" constant="80" id="xqQ-zo-mNt"/>
                                                     </constraints>
-                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium"/>
                                                 </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qqQ-DB-sRj" userLabel="Loader">
+                                                    <rect key="frame" x="15" y="11" width="80" height="80.5"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                </view>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="qqQ-DB-sRj" firstAttribute="bottom" secondItem="FhB-Qw-WNd" secondAttribute="bottom" id="GaD-j2-xEd"/>
                                                 <constraint firstItem="FhB-Qw-WNd" firstAttribute="top" secondItem="Pey-xW-9Z7" secondAttribute="top" constant="11" id="GfB-hb-LF1"/>
+                                                <constraint firstItem="qqQ-DB-sRj" firstAttribute="leading" secondItem="FhB-Qw-WNd" secondAttribute="leading" id="MgO-qy-DG6"/>
+                                                <constraint firstItem="qqQ-DB-sRj" firstAttribute="trailing" secondItem="FhB-Qw-WNd" secondAttribute="trailing" id="ZFW-mO-1sl"/>
                                                 <constraint firstItem="cgV-5V-Bcy" firstAttribute="centerY" secondItem="Pey-xW-9Z7" secondAttribute="centerY" id="biG-XA-U29"/>
+                                                <constraint firstItem="qqQ-DB-sRj" firstAttribute="top" secondItem="FhB-Qw-WNd" secondAttribute="top" id="eXa-Z1-Bkm"/>
                                                 <constraint firstAttribute="bottom" secondItem="FhB-Qw-WNd" secondAttribute="bottom" constant="11" id="fo8-Dq-Mfj"/>
                                                 <constraint firstItem="FhB-Qw-WNd" firstAttribute="leading" secondItem="Pey-xW-9Z7" secondAttribute="leading" constant="15" id="pGA-DG-b9w"/>
                                                 <constraint firstItem="cgV-5V-Bcy" firstAttribute="leading" secondItem="FhB-Qw-WNd" secondAttribute="trailing" constant="15" id="smH-gd-Y57"/>
@@ -52,7 +59,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="thumbImage" destination="FhB-Qw-WNd" id="Auu-IB-l0S"/>
+                                            <outlet property="thumbnailImage" destination="FhB-Qw-WNd" id="Auu-IB-l0S"/>
+                                            <outlet property="thumbnailImageLoadingOverlay" destination="qqQ-DB-sRj" id="wfP-2F-FTk"/>
                                             <outlet property="titleLable" destination="cgV-5V-Bcy" id="EES-yo-P6n"/>
                                         </connections>
                                     </tableViewCell>
@@ -165,7 +173,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icons8-microphone" width="25" height="25"/>
         <image name="icons8-search" width="25" height="25"/>
         <image name="icons8-star-filled" width="25" height="25"/>
     </resources>

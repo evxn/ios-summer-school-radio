@@ -36,4 +36,20 @@ class BaseService {
 				}
 			})
 	}
+	
+	func loadImage(by urlString: String) -> Observable<Data> {
+		guard let url = URL(string: urlString) else {
+			return  Observable.error(BaseServiceErrors.invalidUrl(urlString: urlString))
+		}
+		
+		let request = URLRequest(url: url)
+		
+		if let data = URLCache.shared.cachedResponse(for: request)?.data {
+			return Observable.just(data)
+		} else {
+			return URLSession.shared.rx.data(request: request)
+				.timeout(RxTimeInterval.seconds(5), scheduler: MainScheduler.instance)
+		}
+	}
+		
 }

@@ -10,17 +10,16 @@ import UIKit
 
 class DiscoveryItemCell: UITableViewCell {
 	@IBOutlet weak var titleLable: UILabel!
-	@IBOutlet weak var thumbImage: UIImageView!
+	@IBOutlet weak var thumbnailImage: UIImageView!
+	@IBOutlet weak var thumbnailImageLoadingOverlay: UIView!
 	
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+		UtilsService.shared.setupSpinner(for: thumbnailImageLoadingOverlay)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }
