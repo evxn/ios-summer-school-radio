@@ -179,25 +179,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="130" placeholderIntrinsicHeight="130" translatesAutoresizingMaskIntoConstraints="NO" id="8FN-jG-nV3" userLabel="Cover">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="130" placeholderIntrinsicHeight="130" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8FN-jG-nV3" userLabel="Cover">
                                 <rect key="frame" x="40" y="84" width="334" height="334"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="8FN-jG-nV3" secondAttribute="height" multiplier="1:1" id="HVe-5B-O1x"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6J3-Ma-63K" userLabel="Loader">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6J3-Ma-63K" userLabel="Loader">
                                 <rect key="frame" x="40" y="84" width="334" height="334"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f5N-LN-Wpd" userLabel="PlaybackView">
+                                <rect key="frame" x="0.0" y="418" width="414" height="395"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-play" translatesAutoresizingMaskIntoConstraints="NO" id="8tn-va-9Px">
+                                        <rect key="frame" x="182" y="172.5" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="1Ba-uX-tFv"/>
+                                            <constraint firstAttribute="height" constant="50" id="jPe-Lh-KDU"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="8tn-va-9Px" firstAttribute="centerY" secondItem="f5N-LN-Wpd" secondAttribute="centerY" id="HOa-h0-OQY"/>
+                                    <constraint firstItem="8tn-va-9Px" firstAttribute="centerX" secondItem="f5N-LN-Wpd" secondAttribute="centerX" id="faw-Y1-9Ed"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="8FN-jG-nV3" firstAttribute="top" secondItem="1dc-IZ-6G6" secondAttribute="top" constant="40" id="8mD-l3-FNb"/>
+                            <constraint firstItem="1dc-IZ-6G6" firstAttribute="trailing" secondItem="f5N-LN-Wpd" secondAttribute="trailing" id="5kV-Y0-NEi"/>
+                            <constraint firstItem="8FN-jG-nV3" firstAttribute="top" secondItem="PPs-u8-UjZ" secondAttribute="top" constant="84" id="8mD-l3-FNb"/>
                             <constraint firstItem="6J3-Ma-63K" firstAttribute="trailing" secondItem="8FN-jG-nV3" secondAttribute="trailing" id="AqQ-AI-Pwk"/>
                             <constraint firstItem="6J3-Ma-63K" firstAttribute="top" secondItem="8FN-jG-nV3" secondAttribute="top" id="E7J-6U-KJe"/>
+                            <constraint firstItem="1dc-IZ-6G6" firstAttribute="bottom" secondItem="f5N-LN-Wpd" secondAttribute="bottom" id="Ek7-oJ-Dnl"/>
                             <constraint firstItem="6J3-Ma-63K" firstAttribute="bottom" secondItem="8FN-jG-nV3" secondAttribute="bottom" id="PEj-G0-MMX"/>
+                            <constraint firstItem="f5N-LN-Wpd" firstAttribute="leading" secondItem="1dc-IZ-6G6" secondAttribute="leading" id="XQr-XK-RT9"/>
                             <constraint firstItem="6J3-Ma-63K" firstAttribute="leading" secondItem="8FN-jG-nV3" secondAttribute="leading" id="Yph-RA-ewL"/>
-                            <constraint firstItem="8FN-jG-nV3" firstAttribute="leading" secondItem="1dc-IZ-6G6" secondAttribute="leading" constant="40" id="duw-dU-P1R"/>
-                            <constraint firstItem="1dc-IZ-6G6" firstAttribute="trailing" secondItem="8FN-jG-nV3" secondAttribute="trailing" constant="40" id="iEX-w1-vnj"/>
+                            <constraint firstItem="8FN-jG-nV3" firstAttribute="leading" secondItem="PPs-u8-UjZ" secondAttribute="leading" constant="40" id="duw-dU-P1R"/>
+                            <constraint firstItem="f5N-LN-Wpd" firstAttribute="top" secondItem="8FN-jG-nV3" secondAttribute="bottom" id="hOU-0b-vf3"/>
+                            <constraint firstItem="8FN-jG-nV3" firstAttribute="trailing" secondItem="PPs-u8-UjZ" secondAttribute="trailing" constant="-40" id="iEX-w1-vnj"/>
+                            <constraint firstItem="f5N-LN-Wpd" firstAttribute="top" secondItem="8FN-jG-nV3" secondAttribute="bottom" id="raV-Va-SJv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1dc-IZ-6G6"/>
                     </view>
@@ -210,12 +231,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6h2-hp-MdG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3059" y="-34"/>
+            <point key="canvasLocation" x="3057.971014492754" y="-34.151785714285715"/>
         </scene>
     </scenes>
     <resources>
         <image name="icons8-music-library" width="25" height="25"/>
         <image name="icons8-music-library-filled" width="25" height="25"/>
+        <image name="icons8-play" width="25" height="25"/>
         <image name="icons8-star" width="25" height="25"/>
         <image name="icons8-star-filled" width="25" height="25"/>
     </resources>

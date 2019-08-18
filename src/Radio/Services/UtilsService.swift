@@ -12,12 +12,26 @@ class UtilsService {
 	static let shared = UtilsService()
 	
 	func setupSpinner(for containerView: UIView) {
-		let spinnerView = UIView.init(frame: containerView.bounds)
-		spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
-		let indicator = UIActivityIndicatorView.init(style: .whiteLarge)
-		indicator.startAnimating()
-		indicator.center = spinnerView.center
-		spinnerView.addSubview(indicator)
-		containerView.addSubview(spinnerView)
+		DispatchQueue.main.async {
+			let spinnerView = UIView(frame: containerView.bounds)
+			spinnerView.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+			let indicator = UIActivityIndicatorView(style: .whiteLarge)
+			indicator.startAnimating()
+			indicator.center = spinnerView.center
+			spinnerView.addSubview(indicator)
+			containerView.addSubview(spinnerView)
+		}
+	}
+	
+	func openViewContoller(
+		withIdentifier: String,
+		in navigationController: UINavigationController?,
+		transform callback: ((_ vc: UIViewController) -> UIViewController)?
+	) {
+		let storyboard = UIStoryboard(name: "Main", bundle: Bundle(identifier: "Radio"))
+		let viewController = storyboard.instantiateViewController(withIdentifier: withIdentifier)
+		let transform = callback ?? {x in x}
+		
+		navigationController?.pushViewController(transform(viewController), animated: true)
 	}
 }

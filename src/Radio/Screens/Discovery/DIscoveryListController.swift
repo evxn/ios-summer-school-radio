@@ -24,7 +24,7 @@ class ListViewController: UIViewController {
 				BaseService.shared.loadImage(by: station.imageUrl)
 					.observeOn(MainScheduler.instance)
 					.asSingle()
-					.subscribe({ (event) in
+					.subscribe({event in
 						cell.thumbnailImageLoadingOverlay.isHidden = true
 						
 						switch event {
@@ -40,24 +40,28 @@ class ListViewController: UIViewController {
 			}
 			.disposed(by: bag)
 				
+		// MARK: Navigation
+		
 		tableView.rx.modelSelected(RadioStationDto.self)
-			.subscribe(onNext: showDetailsFor)
+			.observeOn(MainScheduler.instance)
+			.subscribeOn(MainScheduler.instance)
+			.subscribe(onNext: {
+				model in UtilsService.shared.openViewContoller(
+					withIdentifier: "DetailController",
+					in: self.navigationController,
+					transform: { vc in
+						guard let viewController = vc as? DetailController else {
+							print("Cannot instantiate DetailController")
+							return vc
+						}
+						
+						viewController.model = model
+						
+						return viewController
+					}
+				)
+			})
 			.disposed(by: bag)
 	}
 	
-	// MARK: Navigation
-	
-	private func showDetailsFor(model: RadioStationDto) {
-		let storyboard = UIStoryboard(name: "Main", bundle: Bundle(identifier: "Radio"))
-
-		guard let viewController = storyboard.instantiateViewController(withIdentifier: "DetailController") as? DetailController else {
-			print("Cannot instantiate DetailController")
-			return
-		}
-
-		viewController.model = model
-		navigationController?.pushViewController(viewController, animated: true)
-	}
-	
-
 }

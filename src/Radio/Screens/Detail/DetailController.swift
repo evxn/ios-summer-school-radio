@@ -22,8 +22,6 @@ class DetailController: UIViewController {
 		
 		UtilsService.shared.setupSpinner(for: coverLoadingOverlay)
 		
-		addDropShadow(for: cover)
-		
 		if let model = model {
 			Observable.just(model.title)
 				.bind(to: navigationItem.rx.title)
@@ -45,6 +43,8 @@ class DetailController: UIViewController {
 						self.cover?.image = UIImage(named: "icons8-microphone")
 						self.cover?.backgroundColor = UIColor.init(red: 1, green: 0.8, blue: 0, alpha: 1)
 					}
+					
+					self.addDropShadow(for: self.cover)
 				})
 				.disposed(by: self.bag)
 			
