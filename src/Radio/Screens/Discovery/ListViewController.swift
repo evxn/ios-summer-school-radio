@@ -26,7 +26,9 @@ class ListViewController: UIViewController {
 					cellType: DiscoveryItemCell.self
 				)
 			) { index, station, cell in
-				cell.textLabel?.text = station.title
+//				print(cell.thumbImage!)
+//				cell.thumbImage?.image = UIImage(named: "icon8-microphone")
+				cell.titleLable?.text = station.title
 			}
 			.disposed(by: bag)
 	}

@@ -20,31 +20,35 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DiscoveryItemCell" rowHeight="130" translatesAutoresizingMaskIntoConstraints="NO" id="sXY-5X-dnt" customClass="DiscoveryItemCell" customModule="Radio" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="130"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sXY-5X-dnt" id="Pey-xW-9Z7">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
+                                    <tableViewCell autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleAspectFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DiscoveryItemCell" id="sXY-5X-dnt" customClass="DiscoveryItemCell" customModule="Radio" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="102.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sXY-5X-dnt" id="Pey-xW-9Z7">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="102.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FhB-Qw-WNd">
-                                                    <rect key="frame" x="20" y="11" width="119" height="119"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="FhB-Qw-WNd" secondAttribute="height" multiplier="1:1" id="CCX-HZ-hTf"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgV-5V-Bcy">
-                                                    <rect key="frame" x="186" y="50" width="71" height="36"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgV-5V-Bcy">
+                                                    <rect key="frame" x="110" y="37" width="254" height="29"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="130" placeholderIntrinsicHeight="130" image="icons8-microphone" translatesAutoresizingMaskIntoConstraints="NO" id="FhB-Qw-WNd">
+                                                    <rect key="frame" x="15" y="11" width="80" height="80.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="80" id="fmq-dO-2Qy"/>
+                                                        <constraint firstAttribute="height" constant="80" id="xqQ-zo-mNt"/>
+                                                    </constraints>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium"/>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="FhB-Qw-WNd" secondAttribute="bottom" id="0Dc-ws-rUi"/>
-                                                <constraint firstItem="FhB-Qw-WNd" firstAttribute="top" secondItem="Pey-xW-9Z7" secondAttribute="topMargin" id="Htc-8U-x4b"/>
-                                                <constraint firstItem="FhB-Qw-WNd" firstAttribute="leading" secondItem="Pey-xW-9Z7" secondAttribute="leadingMargin" id="RJW-jD-nJN"/>
+                                                <constraint firstItem="FhB-Qw-WNd" firstAttribute="top" secondItem="Pey-xW-9Z7" secondAttribute="top" constant="11" id="GfB-hb-LF1"/>
+                                                <constraint firstItem="cgV-5V-Bcy" firstAttribute="centerY" secondItem="Pey-xW-9Z7" secondAttribute="centerY" id="biG-XA-U29"/>
+                                                <constraint firstAttribute="bottom" secondItem="FhB-Qw-WNd" secondAttribute="bottom" constant="11" id="fo8-Dq-Mfj"/>
+                                                <constraint firstItem="FhB-Qw-WNd" firstAttribute="leading" secondItem="Pey-xW-9Z7" secondAttribute="leading" constant="15" id="pGA-DG-b9w"/>
+                                                <constraint firstItem="cgV-5V-Bcy" firstAttribute="leading" secondItem="FhB-Qw-WNd" secondAttribute="trailing" constant="15" id="smH-gd-Y57"/>
+                                                <constraint firstItem="cgV-5V-Bcy" firstAttribute="trailing" secondItem="Pey-xW-9Z7" secondAttribute="trailing" constant="-50" id="vcb-Zx-ROz"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -161,6 +165,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icons8-microphone" width="25" height="25"/>
         <image name="icons8-search" width="25" height="25"/>
         <image name="icons8-star-filled" width="25" height="25"/>
     </resources>
