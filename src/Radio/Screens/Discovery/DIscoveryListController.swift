@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  Radio
-//
-//  Created by evg on 15/08/2019.
-//  Copyright © 2019 evgn. All rights reserved.
-//
-
 import UIKit
 import RxSwift
 import RxCocoa
@@ -47,8 +39,25 @@ class ListViewController: UIViewController {
 					.disposed(by: self.bag)
 			}
 			.disposed(by: bag)
+				
+		tableView.rx.modelSelected(RadioStationDto.self)
+			.subscribe(onNext: showDetailsFor)
+			.disposed(by: bag)
+	}
+	
+	// MARK: Navigation
+	
+	private func showDetailsFor(model: RadioStationDto) {
+		let storyboard = UIStoryboard(name: "Main", bundle: Bundle(identifier: "Radio"))
+
+		guard let viewController = storyboard.instantiateViewController(withIdentifier: "DetailController") as? DetailController else {
+			print("Cannot instantiate DetailController")
+			return
+		}
+
+		viewController.model = model
+		navigationController?.pushViewController(viewController, animated: true)
 	}
 	
 
 }
-
