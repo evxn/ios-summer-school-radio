@@ -14,6 +14,10 @@
 		BE05474C2305DA5F002CEAD8 /* Radio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE05474A2305DA5F002CEAD8 /* Radio.xcdatamodeld */; };
 		BE0547512305DA5F002CEAD8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE05474F2305DA5F002CEAD8 /* LaunchScreen.storyboard */; };
 		BE05476123084677002CEAD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE05476023084677002CEAD8 /* Assets.xcassets */; };
+		BEF1631F230949CF00C3FC7A /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF1631E230949CF00C3FC7A /* BaseService.swift */; };
+		BEF1632123094A6B00C3FC7A /* RadioStationDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF1632023094A6B00C3FC7A /* RadioStationDto.swift */; };
+		BEF1632323094DEF00C3FC7A /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF1632223094DEF00C3FC7A /* NetworkConstants.swift */; };
+		BEF1632A2309707800C3FC7A /* DiscoveryItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF163292309707800C3FC7A /* DiscoveryItemCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		BE0547502305DA5F002CEAD8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BE0547522305DA5F002CEAD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE05476023084677002CEAD8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BEF1631E230949CF00C3FC7A /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseService.swift; path = Radio/Services/BaseService.swift; sourceTree = SOURCE_ROOT; };
+		BEF1632023094A6B00C3FC7A /* RadioStationDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RadioStationDto.swift; path = Radio/Models/RadioStationDto.swift; sourceTree = SOURCE_ROOT; };
+		BEF1632223094DEF00C3FC7A /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
+		BEF163292309707800C3FC7A /* DiscoveryItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryItemCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +103,7 @@
 		BE05475B2305DCB8002CEAD8 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				BE0547452305DA5F002CEAD8 /* ListViewController.swift */,
+				BEF163282309703100C3FC7A /* Discovery */,
 				BE0547472305DA5F002CEAD8 /* Main.storyboard */,
 			);
 			path = Screens;
@@ -105,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				BE05476023084677002CEAD8 /* Assets.xcassets */,
+				BEF1632223094DEF00C3FC7A /* NetworkConstants.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -120,6 +129,7 @@
 		BE05475E2305EA3B002CEAD8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				BEF1632023094A6B00C3FC7A /* RadioStationDto.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -127,8 +137,18 @@
 		BE05475F2305EA6F002CEAD8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				BEF1631E230949CF00C3FC7A /* BaseService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		BEF163282309703100C3FC7A /* Discovery */ = {
+			isa = PBXGroup;
+			children = (
+				BE0547452305DA5F002CEAD8 /* ListViewController.swift */,
+				BEF163292309707800C3FC7A /* DiscoveryItemCell.swift */,
+			);
+			path = Discovery;
 			sourceTree = "<group>";
 		};
 		E23C1C28535B6B2D7D94D554 /* Pods */ = {
@@ -255,8 +275,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEF1632323094DEF00C3FC7A /* NetworkConstants.swift in Sources */,
+				BEF1632A2309707800C3FC7A /* DiscoveryItemCell.swift in Sources */,
+				BEF1631F230949CF00C3FC7A /* BaseService.swift in Sources */,
 				BE0547462305DA5F002CEAD8 /* ListViewController.swift in Sources */,
 				BE05474C2305DA5F002CEAD8 /* Radio.xcdatamodeld in Sources */,
+				BEF1632123094A6B00C3FC7A /* RadioStationDto.swift in Sources */,
 				BE0547422305DA5F002CEAD8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
