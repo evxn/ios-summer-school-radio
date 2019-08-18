@@ -5,7 +5,7 @@
 		"stream": "http://icecast.vgtrk.cdnvideo.ru/mayakfm_mp3_192kbps",
 		"title": "Радио Маяк",
 		"description": "Старое доброе радио Маяк, которое мы помним еще с детства. На нем вы услышите новости, популярные передачи, музыку.",
-		"website": "http://www.radiomayak.ru"
+		"websiteUrl": "http://www.radiomayak.ru"
 	},
 	{
 		"id": 2,
@@ -13,7 +13,7 @@
 		"stream": "http://ice912.echo.msk.ru:9120/stream",
 		"title": "Эхо Москвы",
 		"description": "Большую часть эфира составляют политические и культурные новости, диалоги с приглашенными экспертами, обзоры свежей прессы, авторские программы, посвященные различным насущным проблемам, некоторые включают в себя участие слушателей.",
-		"website": "http://www.echo.msk.ru"
+		"websiteUrl": "http://www.echo.msk.ru"
 	},
 	{
 		"id": 3,
@@ -21,7 +21,7 @@
 		"stream": "http://ic3.101.ru:8000/a99?type=.mp3",
 		"title": "Радио ENERGY (Энерджи)",
 		"description": "Популярная музыка на радио ENERGY, осуществляющего свое вещание из Москвы с 2003 года. Радио ENERGY - это популярная зарубежная музыка и такие известные передачи как «Утро с черным перцем».",
-		"website": "http://www.energyfm.ru"
+		"websiteUrl": "http://www.energyfm.ru"
 	},
 	{
 		"id": 4,
@@ -29,6 +29,6 @@
 		"stream": "https://onlayn-radio.ru/uploads/posts/2018-07/1531152285_logo.png",
 		"title": "Наше Радио",
 		"description": "На этом радио вещается рок музыка как русских так и зарубежных исполнителей.",
-		"website": "http://www.nashe.ru"
+		"websiteUrl": "http://www.nashe.ru"
 	}
 ]
