@@ -8,15 +8,23 @@
 
 import UIKit
 import CoreData
-import AVFoundation
+import MediaPlayer
+import RxSwift
+import RxCocoa
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 	var window: UIWindow?
 	
+	let bag = DisposeBag()
+	
+	var playTarget: Any?
+	var pauseTarget: Any?
+	
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		setupCache()
 		setupAudioPlayback()
+		setupRemoteTransportControls()
 		return true
 	}
 	
@@ -31,6 +39,70 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		}
 	}
 	
+	func setupRemoteTransportControls() {
+		let commandCenter = MPRemoteCommandCenter.shared()
+		
+		PlayerService.shared.lastToggledId
+			.subscribe(
+				onNext: {id in
+					self.playTarget = .some(commandCenter.playCommand.addTarget { event in
+						guard let isPlaying = PlayerService.shared.isPlaying() else {
+							// nil
+							return .commandFailed
+						}
+						
+						guard !isPlaying else {
+							// already playing
+							return .commandFailed
+						}
+						
+						PlayerService.shared.togglePlay(by: id)
+						return .success
+					})
+					
+					self.pauseTarget = .some(commandCenter.pauseCommand.addTarget { event in
+						guard let isPlaying = PlayerService.shared.isPlaying() else {
+							// nil
+							return .commandFailed
+						}
+						
+						guard isPlaying else {
+							// already paused
+							return .commandFailed
+						}
+						
+						PlayerService.shared.togglePlay(by: id)
+						return .success
+					})
+				},
+				onError: { _ in
+					guard let playTarget = self.playTarget,
+						  let pauseTarget = self.pauseTarget else {
+						return
+					}
+					commandCenter.playCommand.removeTarget(playTarget)
+					commandCenter.pauseCommand.removeTarget(pauseTarget)
+					
+				},
+				onCompleted: {
+					guard let playTarget = self.playTarget,
+						  let pauseTarget = self.pauseTarget else {
+							return
+					}
+					commandCenter.playCommand.removeTarget(playTarget)
+					commandCenter.pauseCommand.removeTarget(pauseTarget)
+				},
+				onDisposed: {
+					guard let playTarget = self.playTarget,
+						  let pauseTarget = self.pauseTarget else {
+							return
+					}
+					commandCenter.playCommand.removeTarget(playTarget)
+					commandCenter.pauseCommand.removeTarget(pauseTarget)
+				}
+			)
+			.disposed(by: bag)
+	}
 	
 	// MARK: - Core Data
 	

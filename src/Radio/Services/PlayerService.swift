@@ -15,11 +15,13 @@ import RxSwiftExt
 class PlayerService {
 	static let shared = PlayerService()
 	
-	let currentlyPlayingId: Observable<Int?>;
+	let currentlyPlayingId: Observable<Int?>
+	let lastToggledId: Observable<Int>
 	
+	private let currentlyPlayingIdSubject: BehaviorSubject<Int?>
 	private let player: STKAudioPlayer
 	private let bag = DisposeBag()
-	private let toggleIdSubject = ReplaySubject<Int>.create(bufferSize: 1)
+	private let lastToggledIdSubject = ReplaySubject<Int>.create(bufferSize: 1)
 	
 	
 	init() {
@@ -34,7 +36,7 @@ class PlayerService {
 			.observe(STKAudioPlayerState.self, #keyPath(STKAudioPlayer.state))
 			.unwrap()
 		
-		let toggleId = toggleIdSubject.asObservable()
+		let toggleId = lastToggledIdSubject.asObservable()
 		
 		toggleId
 			.flatMapLatest { id in
@@ -86,13 +88,21 @@ class PlayerService {
 			})
 			.disposed(by: bag)
 		
-			
-		self.currentlyPlayingId = currentlyPlayingId
 		self.player = player
+		self.currentlyPlayingIdSubject = currentlyPlayingId_
+		self.currentlyPlayingId = currentlyPlayingId
+		self.lastToggledId = toggleId
 	}
 	
 	func togglePlay(by id: Int) {
-		self.toggleIdSubject.onNext(id)
+		self.lastToggledIdSubject.onNext(id)
 	}
-
+	
+	func isPlaying() -> Bool? {
+		do {
+			return try self.currentlyPlayingIdSubject.value() != nil
+		} catch {
+			return nil
+		}
+	}
 }
