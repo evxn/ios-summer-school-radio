@@ -9,3 +9,11 @@ Surf Summer iOS School project
 # Build
 
     xcodebuild -workspace Radio.xcworkspace -scheme Radio
+
+# Requirements
+
+* List of radio stations
+* Radio station details view with option to start playback
+* Background playback
+* Remote playback control
+* Integration with Notification/Control center players
