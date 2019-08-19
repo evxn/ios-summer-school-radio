@@ -98,11 +98,15 @@ class PlayerService {
 		self.lastToggledIdSubject.onNext(id)
 	}
 	
-	func isPlaying() -> Bool? {
+	func isPlaying() -> Bool {
 		do {
 			return try self.currentlyPlayingIdSubject.value() != nil
 		} catch {
-			return nil
+			return false
 		}
+	}
+	
+	func isPaused() -> Bool {
+		return !self.isPlaying()
 	}
 }

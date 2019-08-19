@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		setupCache()
 		setupAudioPlayback()
 		setupRemoteTransportControls()
+		setupNowPlaying()
 		return true
 	}
 	
@@ -46,12 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			.subscribe(
 				onNext: {id in
 					self.playTarget = .some(commandCenter.playCommand.addTarget { event in
-						guard let isPlaying = PlayerService.shared.isPlaying() else {
-							// nil
-							return .commandFailed
-						}
-						
-						guard !isPlaying else {
+						guard PlayerService.shared.isPaused() else {
 							// already playing
 							return .commandFailed
 						}
@@ -61,12 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 					})
 					
 					self.pauseTarget = .some(commandCenter.pauseCommand.addTarget { event in
-						guard let isPlaying = PlayerService.shared.isPlaying() else {
-							// nil
-							return .commandFailed
-						}
-						
-						guard isPlaying else {
+						guard PlayerService.shared.isPlaying() else {
 							// already paused
 							return .commandFailed
 						}
@@ -102,6 +93,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 				}
 			)
 			.disposed(by: bag)
+	}
+	
+	func setupNowPlaying() {
+		let lastToggledId = PlayerService.shared.lastToggledId
+		let stations = lastToggledId.flatMapLatest {
+			id in BaseService.shared.getRadioStations()
+				.observeOn(MainScheduler.instance)
+				.map {list in list.first {$0.id == id}}
+				.unwrap()
+		}
+		let imageData = stations.flatMapLatest {
+			station in BaseService.shared.loadImage(by: station.imageUrl)
+				.observeOn(MainScheduler.instance)
+				.map {data in UIImage.init(data: data)}
+				.catchError { _ in
+					let image = UIImage(named: "icons8-microphone")
+					return Observable.just(image)
+				}
+				.unwrap()
+		}
+		
+		Observable.combineLatest(
+			stations,
+			imageData
+		)
+		.subscribe(onNext: { arg in
+			var nowPlayingInfo = [String : Any]()
+			let (station, image) = arg
+			
+			nowPlayingInfo[MPMediaItemPropertyTitle] = station.title
+			nowPlayingInfo[MPMediaItemPropertyArtwork] =
+				MPMediaItemArtwork(boundsSize: image.size) { size in
+					return image
+			}
+			
+			nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = PlayerService.shared.isPlaying() ?
+				1.0 : 0.0
+			
+			// Set the metadata
+			MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
+			
+		})
+		.disposed(by: bag)
 	}
 	
 	// MARK: - Core Data
