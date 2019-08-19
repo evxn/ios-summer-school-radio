@@ -7,10 +7,8 @@
 //
 
 import UIKit
-import AVKit
 import RxSwift
 import RxCocoa
-import StreamingKit
 
 class DetailController: UIViewController {
 	@IBOutlet weak var coverLoadingOverlay: UIView!
