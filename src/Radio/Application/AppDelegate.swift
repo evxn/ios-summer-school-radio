@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-
+import AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +16,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		setupCache()
+		setupAudioPlayback()
 		return true
+	}
+	
+	// MARK: - Audio
+	
+	func setupAudioPlayback() {
+		do {
+			try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+			let _ = try AVAudioSession.sharedInstance().setActive(true)
+		} catch let error as NSError {
+			print("an error occurred when audio session category.\n \(error)")
+		}
 	}
 	
 	

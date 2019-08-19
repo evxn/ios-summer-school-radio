@@ -5,11 +5,20 @@ PODS:
   - RxRelay (5.0.0):
     - RxSwift (~> 5)
   - RxSwift (5.0.0)
+  - RxSwiftExt (5.0.0):
+    - RxSwiftExt/Core (= 5.0.0)
+    - RxSwiftExt/RxCocoa (= 5.0.0)
+  - RxSwiftExt/Core (5.0.0):
+    - RxSwift (~> 5.0)
+  - RxSwiftExt/RxCocoa (5.0.0):
+    - RxCocoa (~> 5.0)
+    - RxSwiftExt/Core
   - StreamingKit (0.1.30)
 
 DEPENDENCIES:
   - RxCocoa (~> 5)
   - RxSwift (~> 5)
+  - RxSwiftExt (~> 5)
   - StreamingKit (= 0.1.30)
 
 SPEC REPOS:
@@ -17,14 +26,16 @@ SPEC REPOS:
     - RxCocoa
     - RxRelay
     - RxSwift
+    - RxSwiftExt
     - StreamingKit
 
 SPEC CHECKSUMS:
   RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
   RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
   RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
+  RxSwiftExt: 4564187392cc53823ef241fa4a11647861567026
   StreamingKit: 70ca8608c206864b4d54a577eacb3c8bf7c72209
 
-PODFILE CHECKSUM: 4470d1a5f924c293555186dc6f726e832b833fe5
+PODFILE CHECKSUM: b607dfbe665782fa4c2f02f707a4a38840e1c9ff
 
 COCOAPODS: 1.7.5

@@ -2,7 +2,8 @@
 use_frameworks!
 
 target 'Radio' do
-    pod 'RxSwift', '~> 5'
-    pod 'RxCocoa', '~> 5'
-		pod 'StreamingKit', '0.1.30'
+	pod 'RxSwift', '~> 5'
+	pod 'RxCocoa', '~> 5'
+	pod 'StreamingKit', '0.1.30'
+	pod 'RxSwiftExt', '~> 5'
 end

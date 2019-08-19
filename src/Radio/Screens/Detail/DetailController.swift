@@ -54,40 +54,22 @@ class DetailController: UIViewController {
 					
 					self.addDropShadow(for: self.cover)
 				})
-				.disposed(by: self.bag)
+				.disposed(by: bag)
 			
-			let urlString = model.stream
-			guard let url = URL(string: urlString) else {
-				print(BaseServiceErrors.invalidUrl(urlString: urlString))
-				return
-			}
-			
-			do {
-				try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
-				let _ = try AVAudioSession.sharedInstance().setActive(true)
-			} catch let error as NSError {
-				print("an error occurred when audio session category.\n \(error)")
-			}
+			PlayerService.shared.currentlyPlayingId
+				.observeOn(MainScheduler.instance)
+				.map {id in id == model.id}
+				.subscribeOn(MainScheduler.instance)
+				.subscribe(onNext: {currentlyPlaying in
+					self.playPauseButton.image = UIImage(named: currentlyPlaying ? "icons8-pause" : "icons8-play")
+				})
+				.disposed(by: bag)
 			
 			self.playPauseButtonTap.rx.event
 				.observeOn(MainScheduler.instance)
-				.map {_ in BaseService.shared.player.state}
-				.debug()
 				.subscribeOn(MainScheduler.instance)
 				.subscribe(onNext: {status in
-					switch status {
-					case STKAudioPlayerState.paused,
-						 STKAudioPlayerState.stopped,
-						 STKAudioPlayerState.error:
-						BaseService.shared.player.play(url)
-					case STKAudioPlayerState.playing:
-						BaseService.shared.player.pause()
-					case STKAudioPlayerState.disposed,
-						 STKAudioPlayerState.buffering,
-						 STKAudioPlayerState.running: break
-					default:
-						print("Unknown value: \(status)")
-					}
+					PlayerService.shared.togglePlay(by: model.id)
 				})
 				.disposed(by: bag)
 		}
