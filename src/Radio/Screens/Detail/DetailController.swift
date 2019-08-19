@@ -21,10 +21,6 @@ class DetailController: UIViewController {
 	let bag = DisposeBag()
 	var model: RadioStationDto?
 	
-	deinit {
-//		BaseService.shared.player.stop()
-	}
-	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
@@ -74,43 +70,6 @@ class DetailController: UIViewController {
 				.disposed(by: bag)
 		}
     }
-		
-//	override func observeValue(forKeyPath keyPath: String?,
-//							   of object: Any?,
-//							   change: [NSKeyValueChangeKey : Any]?,
-//							   context: UnsafeMutableRawPointer?) {
-//		// Only handle observations for the playerItemContext
-//		guard context == &playerItemContext else {
-//			super.observeValue(
-//				forKeyPath: keyPath,
-//				of: object,
-//				change: change,
-//				context: context
-//			)
-//			return
-//		}
-//
-//
-//		if keyPath == #keyPath(AVPlayerItem.status) {
-//			let status: AVPlayerItem.Status
-//			// Get the status change from the change dictionary
-//			if let statusNumber = change?[.newKey] as? NSNumber {
-//				status = AVPlayerItem.Status(rawValue: statusNumber.intValue)!
-//			} else {
-//				status = AVPlayerItem.Status.unknown
-//			}
-//
-//			// Switch over the status
-//			switch status {
-//			case AVPlayerItem.Status.readyToPlay:
-//				print("AVPlayerItem.readyToPlay")
-//			case AVPlayerItem.Status.failed:
-//				print("AVPlayerItem.failed")
-//			case AVPlayerItem.Status.unknown:
-//				print("AVPlayerItem.unknown")
-//			}
-//		}
-//	}
 	
 	private func addDropShadow(for view: UIView) {
 		let shadowPath = UIBezierPath(rect: view.bounds.insetBy(dx: 20.0, dy: 20.0))
