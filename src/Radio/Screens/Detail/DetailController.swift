@@ -7,16 +7,24 @@
 //
 
 import UIKit
+import AVKit
 import RxSwift
 import RxCocoa
+import StreamingKit
 
 class DetailController: UIViewController {
 	@IBOutlet weak var coverLoadingOverlay: UIView!
 	@IBOutlet weak var cover: UIImageView!
-	
+	@IBOutlet weak var playPauseButton: UIImageView!
+	@IBOutlet weak var playPauseButtonTap: UITapGestureRecognizer!
+		
 	let bag = DisposeBag()
 	var model: RadioStationDto?
-		
+	
+	deinit {
+//		BaseService.shared.player.stop()
+	}
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
@@ -48,9 +56,79 @@ class DetailController: UIViewController {
 				})
 				.disposed(by: self.bag)
 			
+			let urlString = model.stream
+			guard let url = URL(string: urlString) else {
+				print(BaseServiceErrors.invalidUrl(urlString: urlString))
+				return
+			}
+			
+			do {
+				try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+				let _ = try AVAudioSession.sharedInstance().setActive(true)
+			} catch let error as NSError {
+				print("an error occurred when audio session category.\n \(error)")
+			}
+			
+			self.playPauseButtonTap.rx.event
+				.observeOn(MainScheduler.instance)
+				.map {_ in BaseService.shared.player.state}
+				.debug()
+				.subscribeOn(MainScheduler.instance)
+				.subscribe(onNext: {status in
+					switch status {
+					case STKAudioPlayerState.paused,
+						 STKAudioPlayerState.stopped,
+						 STKAudioPlayerState.error:
+						BaseService.shared.player.play(url)
+					case STKAudioPlayerState.playing:
+						BaseService.shared.player.pause()
+					case STKAudioPlayerState.disposed,
+						 STKAudioPlayerState.buffering,
+						 STKAudioPlayerState.running: break
+					default:
+						print("Unknown value: \(status)")
+					}
+				})
+				.disposed(by: bag)
 		}
-		
     }
+		
+//	override func observeValue(forKeyPath keyPath: String?,
+//							   of object: Any?,
+//							   change: [NSKeyValueChangeKey : Any]?,
+//							   context: UnsafeMutableRawPointer?) {
+//		// Only handle observations for the playerItemContext
+//		guard context == &playerItemContext else {
+//			super.observeValue(
+//				forKeyPath: keyPath,
+//				of: object,
+//				change: change,
+//				context: context
+//			)
+//			return
+//		}
+//
+//
+//		if keyPath == #keyPath(AVPlayerItem.status) {
+//			let status: AVPlayerItem.Status
+//			// Get the status change from the change dictionary
+//			if let statusNumber = change?[.newKey] as? NSNumber {
+//				status = AVPlayerItem.Status(rawValue: statusNumber.intValue)!
+//			} else {
+//				status = AVPlayerItem.Status.unknown
+//			}
+//
+//			// Switch over the status
+//			switch status {
+//			case AVPlayerItem.Status.readyToPlay:
+//				print("AVPlayerItem.readyToPlay")
+//			case AVPlayerItem.Status.failed:
+//				print("AVPlayerItem.failed")
+//			case AVPlayerItem.Status.unknown:
+//				print("AVPlayerItem.unknown")
+//			}
+//		}
+//	}
 	
 	private func addDropShadow(for view: UIView) {
 		let shadowPath = UIBezierPath(rect: view.bounds.insetBy(dx: 20.0, dy: 20.0))

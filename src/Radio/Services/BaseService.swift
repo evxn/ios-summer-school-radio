@@ -9,6 +9,8 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import AVKit
+import StreamingKit
 
 enum BaseServiceErrors: Error {
 	case invalidUrl(urlString: String)
@@ -16,6 +18,13 @@ enum BaseServiceErrors: Error {
 
 class BaseService {
 	static let shared = BaseService()
+	let player: STKAudioPlayer
+	
+	init() {
+		var options = STKAudioPlayerOptions()
+		options.bufferSizeInSeconds = 3
+		self.player = STKAudioPlayer(options: options)
+	}
 		
 	func getRadioStations() -> Observable<[RadioStationDto]> {
 		let urlString = "\(NetworkConstants.baseUrl)/stations.json"
@@ -51,5 +60,4 @@ class BaseService {
 				.timeout(RxTimeInterval.seconds(5), scheduler: MainScheduler.instance)
 		}
 	}
-		
 }

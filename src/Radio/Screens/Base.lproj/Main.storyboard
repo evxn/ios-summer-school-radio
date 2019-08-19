@@ -191,17 +191,21 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f5N-LN-Wpd" userLabel="PlaybackView">
                                 <rect key="frame" x="0.0" y="418" width="414" height="395"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-play" translatesAutoresizingMaskIntoConstraints="NO" id="8tn-va-9Px">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-play" translatesAutoresizingMaskIntoConstraints="NO" id="8tn-va-9Px">
                                         <rect key="frame" x="182" y="172.5" width="50" height="50"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="1Ba-uX-tFv"/>
                                             <constraint firstAttribute="height" constant="50" id="jPe-Lh-KDU"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="Qvy-Ou-HSK" appends="YES" id="ScN-zC-zKJ"/>
+                                        </connections>
                                     </imageView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="8tn-va-9Px" firstAttribute="centerY" secondItem="f5N-LN-Wpd" secondAttribute="centerY" id="HOa-h0-OQY"/>
-                                    <constraint firstItem="8tn-va-9Px" firstAttribute="centerX" secondItem="f5N-LN-Wpd" secondAttribute="centerX" id="faw-Y1-9Ed"/>
+                                    <constraint firstItem="8tn-va-9Px" firstAttribute="centerY" secondItem="f5N-LN-Wpd" secondAttribute="centerY" id="Heg-MT-8gC"/>
+                                    <constraint firstItem="8tn-va-9Px" firstAttribute="centerX" secondItem="f5N-LN-Wpd" secondAttribute="centerX" id="SwA-J7-hYP"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -227,9 +231,12 @@
                     <connections>
                         <outlet property="cover" destination="8FN-jG-nV3" id="v16-4E-40b"/>
                         <outlet property="coverLoadingOverlay" destination="6J3-Ma-63K" id="dzD-Do-rLO"/>
+                        <outlet property="playPauseButton" destination="8tn-va-9Px" id="oKE-t2-xwA"/>
+                        <outlet property="playPauseButtonTap" destination="Qvy-Ou-HSK" id="yKk-0y-EKO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6h2-hp-MdG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Qvy-Ou-HSK"/>
             </objects>
             <point key="canvasLocation" x="3057.971014492754" y="-34.151785714285715"/>
         </scene>
