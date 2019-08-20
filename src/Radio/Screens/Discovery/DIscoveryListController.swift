@@ -25,7 +25,7 @@ class ListViewController: UIViewController {
 					.observeOn(MainScheduler.instance)
 					.asSingle()
 					.subscribe({event in
-						cell.thumbnailImageLoadingOverlay.isHidden = true
+					cell.thumbnailImageLoadingOverlay.isHidden = true
 						
 						switch event {
 						case SingleEvent.success(let data):
@@ -47,18 +47,18 @@ class ListViewController: UIViewController {
 			.subscribeOn(MainScheduler.instance)
 			.subscribe(onNext: {
 				model in UtilsService.shared.openViewContoller(
-					withIdentifier: "DetailController",
-					in: self.navigationController,
-					transform: { vc in
-						guard let viewController = vc as? DetailController else {
-							print("Cannot instantiate DetailController")
-							return vc
+						withIdentifier: "DetailController",
+						in: self.navigationController,
+						transform: { vc in
+							guard let viewController = vc as? DetailController else {
+								print("Cannot instantiate DetailController")
+								return vc
+							}
+							
+							viewController.model = model
+							
+							return viewController
 						}
-						
-						viewController.model = model
-						
-						return viewController
-					}
 				)
 			})
 			.disposed(by: bag)
